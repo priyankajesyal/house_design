@@ -18,20 +18,16 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('portfolio.index') }}">
+            <i class="fas fa-file-powerpoint"></i>
             <span>Portfolio</span></a>
     </li>
 
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('proposal.index') }}">
+            <i class="far fa-heart"></i>
             <span>Proposal</span></a>
     </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('proposal.index') }}">
-            <i class="fa fa-bold" aria-hidden="true"></i>
-            <span>Bank Details</span></a>
-    </li>
-
 
 
     {{-- <li class="nav-item">

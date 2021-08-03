@@ -15,7 +15,7 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $data = Portfolio::with(['portfolioImages'])->get();
+        $data = Portfolio::with(['portfolioImages'])->paginate(5);
         return Response(['status'=>'success','data'=>$data],200);
     }
 

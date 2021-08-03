@@ -24,10 +24,11 @@ class ManualPaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            'proposal_id'=>'required',
-            'account_holder_name'=>'required',
-            'ifsc_code'=>'required',
-            'account_number'=>'required',
+            'amount' => 'required',
+            'proposal_id' => 'required',
+            'account_holder_name' => 'required',
+            'ifsc_code' => 'required',
+            'account_number' => 'required',
             'image' => 'required',
         ];
     }

@@ -17,7 +17,7 @@
                 <div class="p-5 m-2 border content">
                     <h2>
                         Description:
-                        <textarea class="m-3 form-control" rows="6">{{ $data->description}}
+                        <textarea class="m-3 form-control" rows="6" disabled>{{ $data->description}}
                         </textarea>
                     </h2>
                     @foreach ($data->proposalimages as $images)

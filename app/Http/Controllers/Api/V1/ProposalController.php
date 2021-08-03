@@ -16,7 +16,7 @@ class ProposalController extends Controller
 
     public function index()
     {
-        return Proposal::with('proposalImages')->get();
+        return Proposal::with('proposalImages')->paginate(5);
     }
     public function show($id)
     {

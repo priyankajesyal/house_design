@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\V1\AuthController as V1AuthController;
+use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\ManualPaymnetController;
 use App\Http\Controllers\Api\V1\PortfolioController;
 use App\Http\Controllers\Api\V1\ProposalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +24,11 @@ Route::group([
     'prefix' => 'v1'
 
 ], function ($router) {
-    Route::post('/login', [V1AuthController::class, 'login']);
-    Route::post('/register', [V1AuthController::class, 'register']);
-    Route::post('/logout', [V1AuthController::class, 'logout']);
-    Route::post('/refresh', [V1AuthController::class, 'refresh']);
-    Route::get('/user-profile', [V1AuthController::class, 'userProfile']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
     Route::apiResource('portfolios', PortfolioController::class);
     Route::apiResource('proposals', ProposalController::class);
     Route::apiResource('manual', ManualPaymnetController::class);

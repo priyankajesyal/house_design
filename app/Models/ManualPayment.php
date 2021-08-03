@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ManualPayment extends Model
 {
     use HasFactory;
-    protected $fillable=['proposal_id','account_holder_name','ifsc_code','amount','account_number','image'];
+
+    protected $fillable = ['amount', 'proposal_id', 'account_holder_name', 'ifsc_code', 'account_number', 'image'];
+
+    public function proposals()
+    {
+        return $this->hasOne(Proposal::class);
+    }
 }

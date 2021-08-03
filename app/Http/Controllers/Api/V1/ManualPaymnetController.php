@@ -17,8 +17,8 @@ class ManualPaymnetController extends Controller
      */
     public function index()
     {
-        $data = ManualPayment::all();
-        return Response(['data'=>$data],200);
+        $data = ManualPayment::paginate(5);
+        return Response(['data' => $data], 200);
     }
 
     /**
@@ -39,7 +39,6 @@ class ManualPaymnetController extends Controller
      */
     public function store(ManualPaymentRequest $request)
     {
-        
         $input = $request->all();
 
         if ($image = $request->file('image')) {

@@ -19,7 +19,7 @@ class CreateManualPaymentsTable extends Migration
             $table->string('amount');
             $table->string('account_holder_name');
             $table->string('ifsc_code');
-            $table->integer('account_number');
+            $table->string('account_number');
             $table->string('image');
             $table->foreign('proposal_id')->references('id')->on('proposals')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

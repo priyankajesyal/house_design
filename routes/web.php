@@ -30,4 +30,5 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'admin:admin'], function () 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('proposal', ProposalController::class);
+    
 });

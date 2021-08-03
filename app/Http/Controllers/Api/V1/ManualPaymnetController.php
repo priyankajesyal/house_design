@@ -39,6 +39,7 @@ class ManualPaymnetController extends Controller
      */
     public function store(ManualPaymentRequest $request)
     {
+        
         $input = $request->all();
 
         if ($image = $request->file('image')) {

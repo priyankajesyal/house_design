@@ -290,3 +290,7 @@
 </body>
 
 </html>
+{{-- $(".unique").click(function(){ alert('ggg')
+var srch = $(".custom-srch").val();
+console.log($("#table_id_filter > input").html());
+}); --}}

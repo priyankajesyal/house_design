@@ -18,16 +18,20 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('portfolio.index') }}">
-            <i class="fa fa-bold" aria-hidden="true"></i>
             <span>Portfolio</span></a>
     </li>
 
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('proposal.index') }}">
-            <i class="fa fa-bold" aria-hidden="true"></i>
             <span>Proposal</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('proposal.index') }}">
+            <i class="fa fa-bold" aria-hidden="true"></i>
+            <span>Bank Details</span></a>
+    </li>
+
 
 
     {{-- <li class="nav-item">

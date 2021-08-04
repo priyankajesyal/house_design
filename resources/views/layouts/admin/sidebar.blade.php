@@ -1,9 +1,9 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
 
-        <div class="mx-3 sidebar-brand-text">{{ config('app.name') }} </div>
+        <div class="mx-3 sidebar-brand-text">Admin </div>
     </a>
 
     <!-- Divider -->
@@ -25,13 +25,13 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('proposal.index') }}">
-            <i class="far fa-heart"></i>
+            <i class="fab fa-pinterest-p"></i>
             <span>Proposal</span></a>
     </li>
 
      <li class="nav-item active">
          <a class="nav-link" href="{{ route('bank-details.index') }}">
-             <i class="far fa-heart"></i>
+             <i class="fas fa-university"></i>
              <span>Bank Details</span></a>
      </li>
 

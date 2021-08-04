@@ -8,9 +8,10 @@
         <tr>
             <th>S.no</th>
             <th>Title</th>
-            <th>Description</th>
+            <th col width="400">Description</th>
             <th>Price</th>
-            <th>Action</th>
+            <th data-orderable="false">Action</th>
+
         </tr>
     </thead>
     <tbody>
@@ -18,7 +19,8 @@
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $value->title }}</td>
-            <td>{{ $value->description }}</td>
+            <td cols="3" rows="3">{{ $value->description }}</td>
+
             <td>{{ $value->price }}</td>
             <td>
                 <form method="post" action="{{ route('portfolio.destroy', $value->id) }}">
@@ -33,3 +35,5 @@
     </tbody>
 </table>
 @endsection
+
+

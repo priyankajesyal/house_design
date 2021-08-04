@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BankDetailController;
+use App\Http\Controllers\Admin\ProposalController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\Admin\ProposalController;
-use App\Http\Controllers\BankDetailController;
 
 /*
 |--------------------------------------------------------------------------

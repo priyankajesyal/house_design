@@ -22,10 +22,10 @@ class BankDetailFactory extends Factory
     public function definition()
     {
         return [
-            'account_holder_name'=>$this->faker->name(),
-            'bank_name'=>'SBI',
-            'account_number'=>$this->faker->creditCardNumber(),
-            'ifsc_code'=>$this->faker->swiftBicNumber()
+            'account_holder_name' => 'Admin',
+            'bank_name' => 'SBI',
+            'account_number' => '34567829741',
+            'ifsc_code' => 'SBIN0002328'
         ];
     }
 }

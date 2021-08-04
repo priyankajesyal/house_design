@@ -6,6 +6,7 @@ use App\Http\Controllers\BankDetailController;
 use App\Http\Controllers\Admin\ProposalController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,5 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'admin:admin'], function () 
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('proposal', ProposalController::class);
     Route::resource('bank-details',BankDetailController::class);
+    Route::resource('banners',BannerController::class);
 });

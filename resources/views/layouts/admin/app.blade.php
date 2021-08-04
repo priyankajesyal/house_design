@@ -78,11 +78,11 @@
                                 <div class="dropdown-divider"></div>
                                 {{--  --}}
 
-                                <form method="post" action="{{ route('admin.logout')}}">
-                                    @csrf
-                                    <button type="submit">Log out</button>
+                                <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                                    <i class="mr-2 text-gray-400 fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
 
-                                </form>
                             </div>
                         </li>
 

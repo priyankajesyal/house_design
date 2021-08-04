@@ -24,7 +24,7 @@ class BankDetailFactory extends Factory
         return [
             'account_holder_name' => 'Admin',
             'bank_name' => 'SBI',
-            'account_number' => 34567829741,
+            'account_number' => '34567829741',
             'ifsc_code' => 'SBIN0002328'
         ];
     }

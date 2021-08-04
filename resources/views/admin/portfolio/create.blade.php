@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form class="shadow m-5 p-5" method="post" action="{{ route('portfolio.store') }}" enctype="multipart/form-data">
+<form class="p-5 m-5 shadow" method="post" action="{{ route('portfolio.store') }}" enctype="multipart/form-data">
     <h2 class="text-center">Portfolio</h2>
     @csrf
 
@@ -21,7 +21,8 @@
                <div class="col-md-8 offset-md-2">
 
                    <label>Description</label>
-                   <input type="text" class="form-control" name="description">
+                   {{-- <input type="text" class="form-control" name="description"> --}}
+                   <textarea class="form-control" name="description"></textarea>
                </div>
            </div>
        </div>

@@ -7,7 +7,7 @@
         <div class="col-md-8 offset-2">
             <div class="card">
                 <div class="card-header bg-primary ">
-                    <h2 class="text-white">Bank Details <a href="" class="float-right btn btn-primary" title="EDIT"><i class="fa fa-edit" title="EDIT"></i></a></h2>
+                    <h2 class="text-white">Bank Details <a href="{{ route('bank-details.edit',$data->id) }}" class="float-right btn btn-primary" title="EDIT"><i class="fa fa-edit" title="EDIT"></i></a></h2>
 
 
                 </div>

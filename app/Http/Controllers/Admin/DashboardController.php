@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Proposal;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class ProposalController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $data=Proposal::with(['portfolio','user'])->get();
-        return view('admin.proposal.index',compact('data'));
+        return view('admin.dashboard');
     }
 
     /**
@@ -48,8 +46,7 @@ class ProposalController extends Controller
      */
     public function show($id)
     {
-        $data=Proposal::with(['portfolio','user','proposalImages'])->find($id);
-        return view('admin.proposal.show',compact('data'));
+        //
     }
 
     /**
@@ -60,8 +57,7 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        $data = Proposal::with(['portfolio', 'user', 'proposalImages'])->find($id);
-        return view('admin.proposal.edit', compact('data'));
+        //
     }
 
     /**
@@ -84,7 +80,6 @@ class ProposalController extends Controller
      */
     public function destroy($id)
     {
-        Proposal::find($id)->delete();
-        return back();
+        //
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use App\Models\PortfolioImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +48,6 @@ class PortfolioController extends Controller
         ]);
 
          $data = $request->merge(['user_id'=>auth()->guard('admin')->user()->id])->except(['images']);
-        // dd($data);
         $portfolio = Portfolio::create($data);
 
         if ($request->hasFile('images')) {
@@ -121,5 +121,11 @@ class PortfolioController extends Controller
     {
         Portfolio::find($id)->delete();
         return back();
+    }
+
+    public function imagedelete(Request $request, $id){
+         dd($request->all());
+        // PortfolioImage::find($id)->delete();
+        // return redirect()->route('portfolio.index');
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\BankDetail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BankDetailRequest;
 
 class BankDetailController extends Controller
@@ -15,8 +16,8 @@ class BankDetailController extends Controller
      */
     public function index()
     {
-        $data=BankDetail::first();
-        return view('admin.bank.index',compact('data'));
+        $data = BankDetail::first();
+        return view('admin.bank.index', compact('data'));
     }
 
     /**
@@ -59,8 +60,8 @@ class BankDetailController extends Controller
      */
     public function edit($id)
     {
-        $data=BankDetail::find($id);
-        return view('admin.bank.edit',compact('data'));
+        $data = BankDetail::find($id);
+        return view('admin.bank.edit', compact('data'));
     }
 
     /**
@@ -72,7 +73,7 @@ class BankDetailController extends Controller
      */
     public function update(BankDetailRequest $request, $id)
     {
-        $data=$request->except(['_token','_method']);
+        $data = $request->except(['_token', '_method']);
         BankDetail::find($id)->update($data);
         return redirect('admin/bank-details');
     }

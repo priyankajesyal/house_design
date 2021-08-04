@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ProposalController;
 use App\Http\Controllers\BankDetailController;
 
@@ -32,4 +33,5 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'admin:admin'], function () 
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('proposal', ProposalController::class);
     Route::resource('bank-details',BankDetailController::class);
+    Route::resource('banners',BannerController::class);
 });

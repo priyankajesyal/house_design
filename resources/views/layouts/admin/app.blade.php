@@ -139,17 +139,20 @@
          */
         function deleteImage(id) {
             $.ajax({
-                url: "{{ route('imageDelete{{id}}') }}"
-
-
+                url: "{{ route('imageDelete') }}"
                 , data: {
-                    id: id
+                    "_token": "{{ csrf_token() }}"
+                    , id: id
                 }
-                , type: "get"
-                , success: function(responses) {
-                    console.log(responses);
+                , type: "post"
+                , success: function(res) {
+                    if (res.status == 'success') {
+                        $("#img-wrap-" + id).fadeOut();
+
+
+                    }
                 }
-            });
+            , });
         }
 
     </script>

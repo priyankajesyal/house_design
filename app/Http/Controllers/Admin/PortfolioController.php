@@ -17,8 +17,8 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $data=Portfolio::all();
-        return view('admin/portfolio.index',compact('data'));
+        $data = Portfolio::all();
+        return view('admin/portfolio.index', compact('data'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PortfolioController extends Controller
             'images' => 'required'
         ]);
 
-         $data = $request->merge(['user_id'=>auth()->guard('admin')->user()->id])->except(['images']);
+        $data = $request->merge(['user_id' => auth()->guard('admin')->user()->id])->except(['images']);
         $portfolio = Portfolio::create($data);
 
         if ($request->hasFile('images')) {
@@ -55,7 +55,7 @@ class PortfolioController extends Controller
                 $resp = $portfolio->portfolioImages()->create(['images' => $image]);
             }
         }
-        
+
         return redirect()->route('portfolio.index')
             ->with('success', 'Portfolio created successfully');
     }
@@ -94,16 +94,17 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+        ]);
+        
         $data = $request->except(['images']);
         $portfolio = Portfolio::find($id)->update($data);
-
         if ($request->hasFile('images')) {
-
             foreach ($request->images as $image) {
                 $resp = $portfolio->portfolioImages()->find($id)->update(['images' => $image]);
-                // dd($resp);
             }
         }
 
@@ -123,9 +124,12 @@ class PortfolioController extends Controller
         return back();
     }
 
-    public function imagedelete(Request $request, $id){
-         dd($request->all());
-        // PortfolioImage::find($id)->delete();
-        // return redirect()->route('portfolio.index');
+    public function imagedelete(Request $request)
+    {
+        $delete = PortfolioImage::find($request->id)->delete();
+        if ($delete) {
+            return response()->json(['status' => 'success', 'message' => 'Image deleted successfully']);
+        }
+        return response()->json(['status' => 'error', 'message' => 'Something went wrong']);
     }
 }

@@ -17,6 +17,12 @@
     </li>
 
     <li class="nav-item active">
+        <a class="nav-link" href="{{ route('banners.index') }}">
+            <i class="fas fa-file-powerpoint"></i>
+            <span>Banners</span></a>
+    </li>
+
+    <li class="nav-item active">
         <a class="nav-link" href="{{ route('portfolio.index') }}">
             <i class="fas fa-file-powerpoint"></i>
             <span>Portfolio</span></a>

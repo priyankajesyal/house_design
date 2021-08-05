@@ -4,7 +4,7 @@
 <div class="row">
     <div class="shadow col-md-12">
 
-        <h1 class="mt-3 text-center">Design</h1>
+        <h1 class="mt-3 text-center">Update Portfolio Design</h1>
         <form action="{{ route('portfolio.update',$data->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             {{ method_field('PUT') }}
@@ -49,15 +49,10 @@
                     @foreach ($data->portfolioimages as $images)
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="img-wrap">
-
-
+                            <div class="img-wrap" id="img-wrap-{{ $images->id }}">
                                 <span onclick="deleteImage({{ $images->id }})">
-
                                     <span class="close">&times;</span>
                                 </span>
-
-
                                 <img class="m-3 img-responsive" src="{{ $images->image }}" width="150" height="200">
                             </div>
                         </div>
@@ -69,5 +64,4 @@
         </form>
     </div>
 </div>
-
 @endsection

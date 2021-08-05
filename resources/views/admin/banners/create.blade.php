@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="title">BANNER NAME</label><br>
                             <input type="text" name="title" class="form-control" placeholder="Enter banner Name"
-                                value="{{ old('title') }}" />
+                                value="{{ old('title') }}">
                             <span style="color:red;">@error('title'){{ $message }}@enderror</span>
                             </div><br>
                             <div class="form-group">

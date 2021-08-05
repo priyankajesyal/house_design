@@ -27,7 +27,6 @@
                     <a class="btn btn-info" href="{{ route('proposal.show', $value->id) }}"><i class="fas fa-eye"></i></a>
                     <a class="btn btn-warning" href="{{ route('proposal.edit', $value->id) }}"><i class="fas fa-edit"></i></a>
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')"><i class="fas fa-trash"></i></button>
-
                 </form>
         </tr>
         @endforeach

@@ -41,7 +41,7 @@ class BannerController extends Controller
     {
 
         $input = $request->merge(['user_id' => auth()->guard('admin')->user()->id])->except(['image']);
-        dd($input);
+        // dd($input);
         if ($image = $request->file('image')) {
 
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();

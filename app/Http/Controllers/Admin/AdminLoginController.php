@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Session;
 class AdminLoginController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('admin:admin')->except(['create','logout']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('admin:admin')->except(['create','logout']);
+    }
 
     public function create()
     {

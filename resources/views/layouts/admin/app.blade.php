@@ -12,11 +12,11 @@
     <title>House Designs</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admins/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admins/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -59,7 +59,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 text-gray-600 d-none d-lg-inline small">{{ config('app.name')}}</span>
-                                <img class="img-profile rounded-circle" src="{{ asset('admin/img/undraw_profile_1.svg') }}">
+                                <img class="img-profile rounded-circle" src="{{ asset('admins/img/undraw_profile_1.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="userDropdown">
@@ -116,20 +116,20 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admins/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('admins/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('admins/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <!-- <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script> -->
+    <!-- <script src="{{ asset('admins/vendor/chart.js/Chart.min.js') }}"></script> -->
 
     <!-- Page level custom scripts -->
-    <!-- <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script> -->
+    <!-- <script src="{{ asset('admins/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('admins/js/demo/chart-pie-demo.js') }}"></script> -->
     <script>
         $(document).ready(function() {
             $('#table_id').DataTable();
@@ -147,9 +147,7 @@
                 , type: "post"
                 , success: function(res) {
                     if (res.status == 'success') {
-                        $("#img-wrap-" + id).fadeOut();
-
-
+                        $("#img-wrap-" + id).fadeout();
                     }
                 }
             , });

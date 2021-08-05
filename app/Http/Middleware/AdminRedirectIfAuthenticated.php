@@ -21,7 +21,7 @@ class AdminRedirectIfAuthenticated
     {
         //  dd($guards);
             if ($guards == "admin" && Auth::guard($guards)->check()) {
-                return redirect()->intended("/dashboard");
+                return redirect()->intended("");
             }
         
         return $next($request);

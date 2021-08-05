@@ -1,32 +1,25 @@
-@extends('admin.layouts.admin')
+@extends('layouts.admin.app')
 
 @section('content')
 
-    @foreach ($posts as $object)
-        <div class="row">
-            <div class="col-md-6 offset-3">
-                <div class="card card-profile">
-                    <div class="card-avatar">
-                        <a href="#">
-                            <img class="img" src="{{ url('storage/banner/' . $object->image) }}" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">BANNER / BANNER NAME</h6>
-                        <h4 class="card-title" style="text-transform:uppercase;">{{ $object->banner_name }}</h4>
-                        <p class="card-description" style="text-transform:capitalize;">
-                            {{ $object->description }}
-                        </p>
-                        <p class="card-heading" style="text-transform:capitalize; font-weight:600">
-                            {{ $object->status ? 'Active' : 'Inactive' }}
-                        </p>
+@foreach ($posts as $object)
+<h1 class="text-center ">View Design</h1>
+<div class="mr-0 row">
+    <div class="container p-5 mt-5 shadow">
+        
+        <div class="row justify-content-center">
+            <div class="text-center col-md-8">
+                <img class=" img" src="{{ url('storage/banner/' . $object->image) }}" width="200px" height="200px" /><br><br>
+                {{-- <h5>BANNER NAME</h5> --}}
+                <h6 class="m-3">{{ $object->title }}</h6>
+                {{-- <h5>BANNER DESCRIPTION</h5> --}}
 
-                    </div>
+                <div class="m-3 des">
+                    {{ $object->description }}
                 </div>
             </div>
         </div>
-
-    @endforeach
-
-
+    </div>
+</div>
+@endforeach
 @endsection

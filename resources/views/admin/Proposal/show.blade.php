@@ -5,7 +5,7 @@
 
         <div class="row">
             <div class="col md-12">
-                <div class="p-4 d-flex justify-content-between bg-dark text-light">
+                <div class="p-4 text-white d-flex justify-content-between bg-primary">
                     <div class="col-md-6">
                         <h2>Portfolio</h2>
                         {{ $data->portfolio->title }}

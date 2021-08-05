@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\BankDetail;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BankDetailRequest;
 
-class BankDetailController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class BankDetailController extends Controller
      */
     public function index()
     {
-        $data = BankDetail::first();
-        return view('admin.bank.index', compact('data'));
+        $data=User::simplepaginate(5);
+        return view('admin.user.index',compact('data'));
     }
 
     /**
@@ -49,7 +48,8 @@ class BankDetailController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=User::find($id);
+        return view('admin.user.show', compact('data'));
     }
 
     /**
@@ -60,8 +60,8 @@ class BankDetailController extends Controller
      */
     public function edit($id)
     {
-        $data = BankDetail::find($id);
-        return view('admin.bank.edit', compact('data'));
+        $data=User::find($id);
+        return view('admin.user.edit');
     }
 
     /**
@@ -71,11 +71,10 @@ class BankDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BankDetailRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = $request->except(['_token', '_method']);
-        BankDetail::find($id)->update($data);
-        return redirect('admin/bank-details')->with('success', 'Bank Details Updated successfully');;
+        $data=User::find($id);
+        return view('admin.user.update', compact('data'));
     }
 
     /**
@@ -86,6 +85,7 @@ class BankDetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=User::find($id)->delete();
+        return redirect('users.index')->with('error','User has been deleted successfully');
     }
 }

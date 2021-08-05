@@ -99,7 +99,7 @@ class PortfolioController extends Controller
             'description' => 'required',
             'price' => 'required',
         ]);
-        
+
         $data = $request->except(['images']);
         $portfolio = Portfolio::find($id)->update($data);
         if ($request->hasFile('images')) {
@@ -109,7 +109,7 @@ class PortfolioController extends Controller
         }
 
         return redirect()->route('portfolio.index')
-            ->with('success', 'Portfolio created successfully');
+            ->with('success', 'Portfolio Updated successfully');
     }
 
     /**
@@ -121,14 +121,14 @@ class PortfolioController extends Controller
     public function destroy($id)
     {
         Portfolio::find($id)->delete();
-        return back();
+        return back()->with('error', 'Portfolio has been Deleted successfully');;
     }
 
     public function imagedelete(Request $request)
     {
         $delete = PortfolioImage::find($request->id)->delete();
         if ($delete) {
-            return response()->json(['status' => 'success', 'message' => 'Image deleted successfully']);
+            return response()->json(['status' => 'error', 'message' => 'Image has been deleted successfully']);
         }
         return response()->json(['status' => 'error', 'message' => 'Something went wrong']);
     }

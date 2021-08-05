@@ -6,7 +6,7 @@
     <div class="p-5 mt-5 shadow col-md-12">
         <div class="row">
             <div class="m-3 col md-12">
-                <div class="p-4 d-flex justify-content-between bg-dark text-light">
+                <div class="p-4 text-white d-flex justify-content-between bg-primary">
                     <div class="col-md-6">
                         <h2>Proposal</h2>
                         <p>Portfolio Name: {{ $data->portfolio->title }}</p>
@@ -29,7 +29,7 @@
         @if($data->manualpayment)
         <div class="row">
             <div class="col-md-12">
-                <h2 class="p-4 bg-dark text-light">Proposal Request Payment Status</h2>
+                <h2 class="p-4 text-white bg-primary">Proposal Request Payment Status</h2>
                 <div class="p-5 m-3 border">
                     <form method="post" action="{{ route('payment.update',$data->manualpayment->id) }}">
                         @csrf

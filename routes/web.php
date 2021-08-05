@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ProposalController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -25,14 +26,15 @@ Route::get('/', function () {
 
 // Route::get('test', [AdminLoginController::class, 'login'])->middleware('admin:admin');
 
-Route::group(['prefix' => 'admin/', 'middleware' => 'admin:admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin:admin'], function () {
     Route::get('login', [AdminLoginController::class, 'create']);
     Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login');
     Route::get('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('portfolio', PortfolioController::class);
     Route::post('imageDelete', [PortfolioController::class, 'imagedelete'])->name('imageDelete');
     Route::resource('proposal', ProposalController::class);
     Route::resource('bank-details', BankDetailController::class);
     Route::resource('banners', BannerController::class);
+    Route::resource('users',UserController::class);
 });

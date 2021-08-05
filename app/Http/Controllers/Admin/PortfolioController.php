@@ -95,7 +95,7 @@ class PortfolioController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|unique:portfolios,title',
             'description' => 'required',
             'price' => 'required',
         ]);

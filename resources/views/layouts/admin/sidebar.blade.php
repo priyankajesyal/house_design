@@ -18,7 +18,7 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('banners.index') }}">
-            <i class="fas fa-file-powerpoint"></i>
+            <i class="fas fa-bold"></i>
             <span>Banners</span></a>
     </li>
 

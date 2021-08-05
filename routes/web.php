@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 Route::get('test', [AdminLoginController::class, 'login'])->middleware('admin:admin');
 
-Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
-    Route::get('login', [AdminLoginController::class, 'create']);
+Route::group(['prefix' => 'admin/', 'middleware' => 'admin:admin'], function () {
+    Route::get('login', [AdminLoginController::class, 'create'])->name('admin.logincreate');
     Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login');
     Route::get('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

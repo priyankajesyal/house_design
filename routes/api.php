@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\BannerController;
 use App\Http\Controllers\Api\V1\ManualPaymnetController;
 use App\Http\Controllers\Api\V1\PortfolioController;
 use App\Http\Controllers\Api\V1\ProposalController;
@@ -32,4 +33,5 @@ Route::group([
     Route::apiResource('portfolios', PortfolioController::class);
     Route::apiResource('proposals', ProposalController::class);
     Route::apiResource('manual', ManualPaymnetController::class);
+    Route::apiResource('banner', BannerController::class);
 });

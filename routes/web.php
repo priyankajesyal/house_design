@@ -31,8 +31,8 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
     Route::get('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('portfolio', PortfolioController::class);
+    Route::resource('banners', BannerController::class);
     Route::post('imageDelete', [PortfolioController::class, 'imagedelete'])->name('imageDelete');
     Route::resource('proposal', ProposalController::class);
     Route::resource('bank-details', BankDetailController::class);
-    Route::resource('banners', BannerController::class);
 });

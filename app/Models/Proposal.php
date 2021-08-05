@@ -10,6 +10,8 @@ class Proposal extends Model
     use HasFactory;
 
     protected $fillable=['portfolio_id','user_id','description'];
+    protected $appends = ['image'];
+
 
     public function proposalImages()
     {
@@ -22,5 +24,10 @@ class Proposal extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function getImageAttribute()
+    {
+        return ProposalImage::where('proposal_id', $this->id)->get();
     }
 }

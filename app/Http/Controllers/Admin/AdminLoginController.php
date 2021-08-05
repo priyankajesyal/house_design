@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Session;
 class AdminLoginController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('admin')->except(['create', 'logout']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('admin')->except(['login', 'logout']);
+    // }
 
     public function create()
     {
@@ -31,11 +31,11 @@ class AdminLoginController extends Controller
 
         $credentials = array('email' => $input['email'], 'password' => $input['password']);
         if (Auth::guard('admin')->attempt($credentials)) {
-            //   dd(Auth::guard('admin')->user());
+            //    dd(Auth::guard('admin')->user());
             return redirect()->route('dashboard');
         } else {
             return redirect()->route('admin.login')
-            ->with('error', 'Email-Address And Password Are Wrong.');
+                ->with('error', 'Email-Address And Password Are Wrong.');
         }
     }
 
@@ -44,6 +44,6 @@ class AdminLoginController extends Controller
     {
         //  dd(Auth::guard('admin')->user());
         Auth::guard('admin')->logout();
-        return redirect('/admin/login');
+        return redirect()->route('admin.login');
     }
 }

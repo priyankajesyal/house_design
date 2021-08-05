@@ -64,6 +64,10 @@ class AuthController extends Controller
             ['password' => bcrypt($request->password)]
         ));
 
+        if (!$token = auth('api')->attempt($validator->validated())) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        return $this->createNewToken($token);
         return response()->json([
             'message' => 'User successfully registered',
             'user' => $user
@@ -115,7 +119,6 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60,
             'user' => auth('api')->user()
         ]);
     }

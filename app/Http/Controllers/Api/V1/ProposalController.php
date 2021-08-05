@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProposalResource;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Validator;
 
-class ProposalController extends Controller
+class ProposalController extends ApiController
 {
+
+
+
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -16,7 +22,11 @@ class ProposalController extends Controller
 
     public function index()
     {
-        return Proposal::with('proposalImages')->paginate(5);
+        $data = Proposal::with(['proposalImages'])->paginate(5);
+        return ProposalResource::collection($data);
+        // $proposals = Proposal::all();
+        // return $this->successResponse($proposals);
+        // return Proposal::with('proposalImages')->paginate(5);
     }
     public function show($id)
     {

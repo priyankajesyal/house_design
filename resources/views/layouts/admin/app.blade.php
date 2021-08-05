@@ -21,16 +21,16 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 
 
-@livewireStyles
+    @livewireStyles
 </head>
 
 <body id="page-top">
-@livewireScripts
+    @livewireScripts
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -67,9 +67,9 @@
                                     <i class="mr-2 text-gray-400 fas fa-user fa-sm fa-fw"></i>
                                     Profile
                                 </a>
-                              
+
                                 <div class="dropdown-divider"></div>
-                                {{--  --}}
+                                {{-- --}}
 
                                 <a class="dropdown-item" href="{{ route('admin.logout') }}">
                                     <i class="mr-2 text-gray-400 fas fa-sign-out-alt"></i>
@@ -130,12 +130,29 @@
     <!-- Page level custom scripts -->
     <!-- <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script> -->
-<script>
-    $(document).ready(function() {
-        $('#table_id').DataTable();
-    });
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+        /**
+         *  Delete Portfolio Images 
+         */
+        function deleteImage(id) {
+            $.ajax({
+                url: "{{ route('imageDelete{{id}}') }}"
 
-</script>
+
+                , data: {
+                    id: id
+                }
+                , type: "get"
+                , success: function(responses) {
+                    console.log(responses);
+                }
+            });
+        }
+
+    </script>
 
 </body>
 

@@ -31,14 +31,15 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('bank-details.index') }}">
-            <i class="far fa-heart"></i>
+            <i class="fas fa-university"></i>
+
             <span>Bank Details</span></a>
     </li>
-    <li class="nav-item active">
+    {{-- <li class="nav-item active">
         <a class="nav-link" href="{{ route('banners.index') }}">
             <i class="far fa-heart"></i>
             <span>Banners</span></a>
-    </li>
+    </li> --}}
 
 
 

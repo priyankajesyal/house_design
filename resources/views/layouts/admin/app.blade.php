@@ -22,9 +22,13 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
     @livewireStyles
 </head>
+
 <body id="page-top">
     @livewireScripts
     <!-- Page Wrapper -->
@@ -144,7 +148,7 @@
                 type: "post",
                 success: function(res) {
                     if (res.status == 'success') {
-                        $("#img-wrap-" + id).fadeout();
+                        $("#img-wrap-" + id).fadeOut();
                     }
                 },
             });

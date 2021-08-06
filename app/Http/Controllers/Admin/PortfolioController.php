@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PortfolioImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PortfolioController extends Controller
 {
@@ -94,21 +95,21 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $task = Portfolio::findOrFail($id);
         $this->validate($request, [
-            'title' => 'required|unique:portfolios,title,' . $id,
+            'title' => 'required',
             'description' => 'required',
             'price' => 'required',
         ]);
-        $data = $request->except(['images']);
-        $portfolio = Portfolio::find($id)->update($data);
+        $input = $request->all();
         if ($request->hasFile('images')) {
             foreach ($request->images as $image) {
-                $resp = $portfolio->portfolioImages()->find($id)->update(['images' => $image]);
+                $input = $task->portfolioImages()->create(['images' => $image]);
             }
         }
-       
+        $task->fill($input)->save();
         return redirect()->route('portfolio.index')
-            ->with('success', 'Portfolio Updated successfully');
+            ->with('success', 'Portfolio created successfully');
     }
 
     /**

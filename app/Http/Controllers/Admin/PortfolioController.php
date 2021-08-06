@@ -95,11 +95,10 @@ class PortfolioController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required|unique:portfolios,title',
+            'title' => 'required|unique:portfolios,title,' . $id,
             'description' => 'required',
             'price' => 'required',
         ]);
-
         $data = $request->except(['images']);
         $portfolio = Portfolio::find($id)->update($data);
         if ($request->hasFile('images')) {
@@ -107,7 +106,7 @@ class PortfolioController extends Controller
                 $resp = $portfolio->portfolioImages()->find($id)->update(['images' => $image]);
             }
         }
-
+       
         return redirect()->route('portfolio.index')
             ->with('success', 'Portfolio Updated successfully');
     }

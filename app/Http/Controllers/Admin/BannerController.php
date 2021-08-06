@@ -17,7 +17,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $posts = Banner::simplepaginate(5);
+        $posts = Banner::all();
         return view('admin.banners.index', compact('posts'));
     }
 

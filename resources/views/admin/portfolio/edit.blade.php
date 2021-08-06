@@ -35,12 +35,12 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    @error('images')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        @error('images')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="row ">
@@ -64,5 +64,4 @@
             
         </form>
     </div>
-</div>
 @endsection

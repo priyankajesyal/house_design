@@ -17,7 +17,6 @@
 <form class="p-5 m-5 shadow" method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
     <h2 class="text-center">User</h2>
     @csrf
-
     <div class="form-group">
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -26,7 +25,6 @@
                 @error('name')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
-
             </div>
         </div>
     </div>
@@ -35,7 +33,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <label>Email</label>
-                <input type="text" class="form-control" name="email" value="{{ old('email') }}">
+                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                 @error('email')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -51,10 +49,23 @@
                 @error('password')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
-
             </div>
         </div>
     </div>
+     {{-- <div class="form-group">
+         <div class="row">
+             <div class="col-md-8 offset-md-2">
+                 <label>Confirm Password</label>
+                 <input type="text" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}">
+
+                 @error('password_confirmation')
+
+                 <div class="text-danger">{{ $message }}</div>
+                 @enderror
+             </div>
+         </div>
+     </div> --}}
+
     <div class="text-center">
         <input type="submit" name="submit" class="btn btn-primary">
     </div>

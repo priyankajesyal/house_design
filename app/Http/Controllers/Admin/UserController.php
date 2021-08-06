@@ -37,9 +37,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(UserRequest $request)
-    {
-        User::create($request->all());
-        return redirect()->route('users.index')->with('success', 'User has been Created successfully');;
+    { 
+       
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+        return redirect()->route('users.index')->with('User Register Successfully');
     }
 
     /**

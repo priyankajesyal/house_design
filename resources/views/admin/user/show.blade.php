@@ -6,10 +6,11 @@
         <h1 class="mb-3 text-center">View User</h1>
         <div class="row justify-content-center">
             <div class="text-center col-md-8">
+              
                 <h1 class="m-3">{{ $data->name }}</h1>
-                <div class="m-3 des">
+                <h2 class="m-3 des">
                     {{ $data->email }}
-                </div>
+                </h2>
             </div>
         </div>
     </div>

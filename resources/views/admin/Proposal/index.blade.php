@@ -27,7 +27,6 @@
             <th>Portfolio</th>
             <th>Name</th>
             <th data-orderable="false">Action</th>
-
         </tr>
     </thead>
     <tbody>
@@ -35,10 +34,9 @@
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $value->portfolio->title }}</td>
-            <td>{{ $value->user->name }}</td>
+            <a href="{{ route('users.index') }}"><td>{{ $value->user->name }}</td></a>
             <td>
-                <form method="post" action="{{ route('proposal.destroy', $value->id) }}" >
-
+                <form method="post" action="{{ route('proposal.destroy', $value->id) }}">
                     @csrf
                     @method('DELETE')
                     <a class="btn btn-info" href="{{ route('proposal.show', $value->id) }}"><i class="fas fa-eye"></i></a>

@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <label>Email</label>
-                <textarea class="form-control" name="email">{{ old('email') }}</textarea>
+                <input type="text" class="form-control" name="email" value="{{ old('email') }}">
                 @error('email')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror

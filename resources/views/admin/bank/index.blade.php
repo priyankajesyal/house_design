@@ -5,16 +5,21 @@
 <div class="conatiner">
     <div class="row">
         <div class="col-md-8 offset-2">
-            @if (Session::has('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ Session::get('error') }}
-            </div>
-            @endif
-            @if (Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
-            </div>
-            @endif
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>{{ $message }}</strong>
+          </div>
+          @endif
+
+
+          @if ($message = Session::get('error'))
+          <div class="alert alert-danger alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>{{ $message }}</strong>
+          </div>
+          @endif
+
 
             <div class="card">
                 <div class="card-header bg-primary ">

@@ -16,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data=User::all();
-        return view('admin.user.index',compact('data'));
+        $data = User::all();
+        return view('admin.user.index', compact('data'));
     }
 
     /**
@@ -39,7 +39,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         User::create($request->all());
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User has been Created successfully');;
     }
 
     /**
@@ -50,7 +50,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data=User::find($id);
+        $data = User::find($id);
         return view('admin.user.show', compact('data'));
     }
 
@@ -62,8 +62,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $data=User::find($id);
-        return view('admin.user.edit');
+        $data = User::find($id);
+        return view('admin.user.edit', compact('data'));
     }
 
     /**
@@ -75,8 +75,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=User::find($id);
-        return view('admin.user.update', compact('data'));
+        $data = User::find($id)->update($request->all());
+        return redirect()->route('users.index')->with('success', 'User has been Updated successfully');
     }
 
     /**
@@ -87,7 +87,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $data=User::find($id)->delete();
-        return redirect('users.index')->with('error','User has been deleted successfully');
+        $data = User::find($id)->delete();
+        return redirect()->route('users.index')->with('error', 'User has been deleted successfully');
     }
 }

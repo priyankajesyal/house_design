@@ -1,16 +1,20 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    @if (Session::has('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ Session::get('error') }}
-        </div>
-    @endif
-    @if (Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
-        </div>
-    @endif
+   @if ($message = Session::get('success'))
+   <div class="alert alert-success alert-block">
+       <button type="button" class="close" data-dismiss="alert">×</button>
+       <strong>{{ $message }}</strong>
+   </div>
+   @endif
+
+
+   @if ($message = Session::get('error'))
+   <div class="alert alert-danger alert-block">
+       <button type="button" class="close" data-dismiss="alert">×</button>
+       <strong>{{ $message }}</strong>
+   </div>
+   @endif
 
 
     <h2 class="">Banners<a class="float-right btn btn-primary" href="{{ route('banners.create') }}"><i

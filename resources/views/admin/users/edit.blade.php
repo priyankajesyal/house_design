@@ -25,8 +25,6 @@
                     @enderror
                 </div>
             </div>
-        
-          
             <input type="submit" name="submit" value="UPDATE" class="m-3 btn btn-primary">
         </form>
     </div>

@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="mb-3 text-center">View Design</h1>
     <div class="mr-0 row">
-        <div class="container p-5 mt-5 shadow">
+        <div class="container p-5 shadow">
             <div class="row justify-content-center">
                 <div class="text-center col-md-8">
                     {{-- {{ $data->portfolioimages }} --}}

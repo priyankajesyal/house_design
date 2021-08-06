@@ -94,20 +94,23 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $portfolio = Portfolio::findOrFail($id);
+        // dd($request->all());
         $this->validate($request, [
-            'title' => 'required|unique:portfolios,title',
+            'title' => 'required|unique:portfolios,title,' . $id,
             'description' => 'required',
             'price' => 'required',
         ]);
 
-        $data = $request->except(['images']);
-        $portfolio = Portfolio::find($id)->update($data);
+        // $data = $request->except(['images']);
+        
+        $input=$request->all();
         if ($request->hasFile('images')) {
             foreach ($request->images as $image) {
-                $resp = $portfolio->portfolioImages()->find($id)->update(['images' => $image]);
+                $input = $portfolio->portfolioImages()->create(['images' => $image]);
             }
         }
-
+        $portfolio->fill($input)->save();
         return redirect()->route('portfolio.index')
             ->with('success', 'Portfolio Updated successfully');
     }
@@ -128,7 +131,7 @@ class PortfolioController extends Controller
     {
         $delete = PortfolioImage::find($request->id)->delete();
         if ($delete) {
-            return response()->json(['status' => 'error', 'message' => 'Image has been deleted successfully']);
+            return response()->json(['status' => 'success', 'message' => 'Image has been deleted successfully']);
         }
         return response()->json(['status' => 'error', 'message' => 'Something went wrong']);
     }

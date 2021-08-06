@@ -44,7 +44,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
-        return redirect()->route('users.index')->with('User Register Successfully');
+        return redirect()->route('users.index')->with('success','User Register Successfully');
     }
 
     /**
@@ -80,6 +80,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email,'.$id,
+        ]);
         $data = User::find($id)->update($request->all());
         return redirect()->route('users.index')->with('success', 'User has been Updated successfully');
     }

@@ -1,10 +1,11 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="row">
-    <div class="shadow col-md-12">
+ <h1 class="my-3 text-center">Update Portfolio Design</h1>
 
-        <h1 class="mt-3 text-center">Update Portfolio Design</h1>
+<div class="row">
+    <div class="p-5 shadow col-md-10 offset-1">
+       
         <form action="{{ route('portfolio.update',$data->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             {{ method_field('PUT') }}
@@ -20,7 +21,7 @@
             <div class="row">
                 <div class="col-md-10 offset-md-1">
                     <label>Description</label>
-                    <input type="text" name="description" value="{{ $data->description }}" class="mb-3 form-control">
+                    <textarea name="description" class="mb-3 form-control">{{ $data->description }}</textarea>
                     @error('description')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -28,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col-md-10 offset-md-1">
-                    <label>Price</label>
+                    <label>Price</label> 
                     <input type="text" name="price" value="{{ $data->price }}" class="mb-3 form-control">
                     @error('price')
                     <div class="text-danger">{{ $message }}</div>
@@ -42,25 +43,25 @@
                     @enderror
                 </div>
             </div>
-
             <div class="row ">
-                <div class="col-md-10 offset-md-1">
+                <div class="col-md-10 offset-md-1 d-flex">
                     <label>Image</label><br>
                     @foreach ($data->portfolioimages as $images)
-                    <div class="row">
-                        <div class="col-md-8">
                             <div class="img-wrap" id="img-wrap-{{ $images->id }}">
                                 <span onclick="deleteImage({{ $images->id }})">
                                     <span class="close">&times;</span>
                                 </span>
                                 <img class="m-3 img-responsive" src="{{ $images->image }}" width="150" height="200">
                             </div>
-                        </div>
-                    </div>
                     @endforeach
                 </div>
+               <div class="col-md-10 offset-md-1">
+                <input type="file" name="images[]" multiple="multiple"><br><br>
+                <input type="submit" name="submit" class="m-3 btn btn-primary">
+
+               </div>
             </div>
-            <input type="submit" name="submit" class="m-3 btn btn-primary">
+            
         </form>
     </div>
 </div>

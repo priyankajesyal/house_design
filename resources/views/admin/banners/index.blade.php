@@ -47,7 +47,7 @@
                                 {{ $post->title }}
                             </td>
                             <td>
-                                <img src="{{ url('storage/banner/' . $post->image) }}" width="100px" height="40px">
+                                <img src="{{ url('storage/banner/' . $post->image) }}" width="100px" height="60px">
                             </td>
                             <td>
                                 {{ $post->description }}
@@ -60,7 +60,8 @@
 
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash" title="DELETE"></i></button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')"><i class="fa fa-trash" title="DELETE"></i></button>
+
                                 </form>
                             </td>
                         </tr>

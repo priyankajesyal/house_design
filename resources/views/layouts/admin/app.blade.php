@@ -148,7 +148,7 @@
                 type: "post",
                 success: function(res) {
                     if (res.status == 'success') {
-                        $("#img-wrap-" + id).fadeout();
+                        $("#img-wrap-" + id).fadeOut();
                     }
                 },
             });

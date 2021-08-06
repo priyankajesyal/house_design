@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <h2 class="">USERS<a class="float-right btn btn-primary" href="{{ route('portfolio.create') }}"><i
+    <h2 class="">USERS<a class="float-right btn btn-primary" href="{{ route('users.create') }}"><i
                 class="fas fa-folder-plus"></i> Add New</a>
     </h2>
     <hr>

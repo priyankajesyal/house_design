@@ -5,18 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data=User::all();
-        return view('admin.user.index',compact('data'));
+        $data = User::all();
+        return view('admin.users.index', compact('data'));
     }
 
     /**
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -37,7 +38,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        return redirect()->route('users.index')
+        ->with('success', 'User created successfully');
     }
 
     /**
@@ -48,8 +56,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data=User::find($id);
-        return view('admin.user.show', compact('data'));
+        $posts = User::where('id', $id)->get();
+        return view('admin.users.show', compact('posts'));
     }
 
     /**
@@ -60,8 +68,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $data=User::find($id);
-        return view('admin.user.edit');
+        $post = User::find($id);
+        return view('admin.users.edit', compact('post'));
     }
 
     /**
@@ -73,9 +81,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=User::find($id);
-        return view('admin.user.update', compact('data'));
+        $data = Validator::make($request->all(), [
+            'email' => 'required|unique:users,email,' . $id,
+        ]);
+        if ($data->fails()) {
+            return response(['status' => 'error', 'message' => $data->errors()->all()], 400);
+        }
+        $input = $request->all();
+        $product = User::find($id);
+        $product->update($input);
+
+        return redirect()->route('users.index')
+            ->with('success', 'User updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,7 +104,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $data=User::find($id)->delete();
-        return redirect('users.index')->with('error','User has been deleted successfully');
+        User::where('id',$id)->delete();
+        return back()->with('error','User has been deleted successfully!');
     }
 }

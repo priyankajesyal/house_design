@@ -66,10 +66,3 @@
 
 
 
-Good evening,
-
-Today I've done following topics:-
-
-It took 9 hrs to complete.
-
-Thank You.

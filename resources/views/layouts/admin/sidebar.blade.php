@@ -27,7 +27,7 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('banners.index') }}">
-            <i class="fas fa-bold"></i>
+            <i class="fas fa-flag"></i>
             <span>Banners</span></a>
     </li>
 
@@ -40,7 +40,7 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('proposal.index') }}">
-            <i class="fab fa-pinterest-p"></i>
+            <i class="fas fa-hands-helping"></i>
             <span>Proposal</span></a>
     </li>
 

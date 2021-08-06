@@ -129,8 +129,13 @@
     <!-- <script src="{{ asset('admins/vendor/chart.js/Chart.min.js') }}"></script> -->
 
     <!-- Page level custom scripts -->
+<<<<<<< HEAD
+    <!-- <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
+ <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script> -->
+=======
     <!-- <script src="{{ asset('admins/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('admins/js/demo/chart-pie-demo.js') }}"></script> -->
+>>>>>>> 143671378d97513724288a708c2dede9f66a2f9b
     <script>
         $(document).ready(function() {
             $('#table_id').DataTable();

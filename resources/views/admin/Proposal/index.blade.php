@@ -1,6 +1,23 @@
 @extends('layouts.admin.app')
 
 @section('content')
+
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
+
+
+  @if ($message = Session::get('error'))
+  <div class="alert alert-danger alert-block">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
+
+  
 <h2>PROPOSALS</h2>
 <hr>
 <table id="table_id" class="table table-hover table-bordered">
@@ -10,7 +27,6 @@
             <th>Portfolio</th>
             <th>Name</th>
             <th data-orderable="false">Action</th>
-
         </tr>
     </thead>
     <tbody>
@@ -18,10 +34,9 @@
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $value->portfolio->title }}</td>
-            <td>{{ $value->user->name }}</td>
+            <a href="{{ route('users.index') }}"><td>{{ $value->user->name }}</td></a>
             <td>
-                <form method="post" action="{{ route('proposal.destroy', $value->id) }}" >
-
+                <form method="post" action="{{ route('proposal.destroy', $value->id) }}">
                     @csrf
                     @method('DELETE')
                     <a class="btn btn-info" href="{{ route('proposal.show', $value->id) }}"><i class="fas fa-eye"></i></a>

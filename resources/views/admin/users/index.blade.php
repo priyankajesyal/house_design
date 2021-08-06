@@ -8,12 +8,12 @@
 @endif
 
 
-@if ($message = Session::get('error'))
-<div class="alert alert-danger alert-block">
-	<button type="button" class="close" data-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-</div>
-@endif
+  @if ($message = Session::get('error'))
+  <div class="alert alert-danger alert-block">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
 
     <h2 class="">USERS<a class="float-right btn btn-primary" href="{{ route('users.create') }}"><i
                 class="fas fa-folder-plus"></i> Add New</a>

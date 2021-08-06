@@ -85,6 +85,6 @@ class ProposalController extends Controller
     public function destroy($id)
     {
         Proposal::find($id)->delete();
-        return back();
+        return back()->with('error', 'Proposal has been deleted successfully');;
     }
 }

@@ -101,8 +101,6 @@ class PortfolioController extends Controller
             'description' => 'required',
             'price' => 'required',
         ]);
-
-        // $data = $request->except(['images']);
         
         $input=$request->all();
         if ($request->hasFile('images')) {
@@ -112,7 +110,7 @@ class PortfolioController extends Controller
         }
         $portfolio->fill($input)->save();
         return redirect()->route('portfolio.index')
-            ->with('success', 'Portfolio Updated successfully');
+        ->with('success', 'Portfolio Updated successfully');
     }
 
     /**

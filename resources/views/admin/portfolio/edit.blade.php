@@ -5,8 +5,7 @@
 
 <div class="row">
     <div class="p-5 shadow col-md-10 offset-1">
-       
-        <form action="{{ route('portfolio.update',$data->id) }}" method="post" enctype="multipart/form-data">
+        <form name="form" id="form" action="{{ route('portfolio.update',$data->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             {{ method_field('PUT') }}
             <div class="row">
@@ -58,10 +57,19 @@
                <div class="col-md-10 offset-md-1">
                 <input type="file" name="images[]" multiple="multiple"><br><br>
                 <input type="submit" name="submit" class="m-3 btn btn-primary">
-
                </div>
             </div>
-            
         </form>
     </div>
 @endsection
+
+
+
+
+Good evening,
+
+Today I've done following topics:-
+
+It took 9 hrs to complete.
+
+Thank You.

@@ -30,11 +30,14 @@
         </tr>
     </thead>
     <tbody>
+        {{-- {{ $input }} --}}
         @foreach ($data as $key => $value)
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $value->portfolio->title }}</td>
-            <a href="{{ route('users.index') }}"><td>{{ $value->user->name }}</td></a>
+            <td><a href="{{ route('users.show',$value->user->id) }}">{{ $value->user->name }}</a></td>
+
+
             <td>
                 <form method="post" action="{{ route('proposal.destroy', $value->id) }}">
                     @csrf

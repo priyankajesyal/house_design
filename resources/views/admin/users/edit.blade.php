@@ -1,9 +1,11 @@
 @extends('layouts.admin.app')
 
 @section('content')
+<h1 class="my-3 text-center">Update User</h1>
+
 <div class="row">
-    <div class="shadow col-md-12">
-        <h1 class="mt-3 text-center">Update User</h1>
+    <div class="p-5 shadow col-md-10 offset-1">
+        
         <form action="{{ route('users.update',$data->id) }}" method="post">
             @csrf
             {{ method_field('PUT') }}
@@ -23,9 +25,11 @@
                     @error('email')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
+                    <input type="submit" name="submit" value="UPDATE" class="m-3 btn btn-primary">
+
                 </div>
             </div>
-            <input type="submit" name="submit" value="UPDATE" class="m-3 btn btn-primary">
+            
         </form>
     </div>
 </div>

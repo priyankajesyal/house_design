@@ -62,15 +62,14 @@
                                 <img class="img-profile rounded-circle" src="{{ asset('admins/img/undraw_profile_1.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="mr-2 text-gray-400 fas fa-user fa-sm fa-fw"></i>
                                     Profile
                                 </a>
 
                                 <div class="dropdown-divider"></div>
-                                {{--  --}}
+                                {{-- --}}
 
                                 <a class="dropdown-item" href="{{ route('admin.logout') }}">
                                     <i class="mr-2 text-gray-400 fas fa-sign-out-alt"></i>
@@ -140,18 +139,18 @@
          */
         function deleteImage(id) {
             $.ajax({
-                url: "{{ route('imageDelete') }}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    id: id
-                },
-                type: "post",
-                success: function(res) {
+                url: "{{ route('imageDelete') }}"
+                , data: {
+                    "_token": "{{ csrf_token() }}"
+                    , id: id
+                }
+                , type: "post"
+                , success: function(res) {
                     if (res.status == 'success') {
                         $("#img-wrap-" + id).fadeOut();
                     }
-                },
-            });
+                }
+            , });
         }
     </script>
 

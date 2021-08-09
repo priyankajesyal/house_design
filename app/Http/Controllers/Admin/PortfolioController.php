@@ -94,23 +94,20 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $portfolio = Portfolio::findOrFail($id);
-        // dd($request->all());
         $this->validate($request, [
             'title' => 'required|unique:portfolios,title,' . $id,
             'description' => 'required',
             'price' => 'required',
         ]);
-        
-        $input=$request->all();
+        $portfolio = Portfolio::find($id);
+        $portfolio->update($request->all());
         if ($request->hasFile('images')) {
             foreach ($request->images as $image) {
                 $input = $portfolio->portfolioImages()->create(['images' => $image]);
             }
         }
-        $portfolio->fill($input)->save();
         return redirect()->route('portfolio.index')
-        ->with('success', 'Portfolio Updated successfully');
+            ->with('success', 'Portfolio Updated successfully');
     }
 
     /**

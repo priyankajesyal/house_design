@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\MilestonePayment;
+use App\Http\Controllers\Controller;
 
 class MilestoneController extends Controller
 {
@@ -33,9 +34,9 @@ class MilestoneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $user_id, $proposal_id, $milestone_id, $status, $task, $amount)
     {
-        //
+        $this->milestone( $request,$user_id, $proposal_id, $milestone_id, $status, $task, $amount);
     }
 
     /**
@@ -81,5 +82,54 @@ class MilestoneController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function milestone(Request $request,$user_id,$proposal_id,$milestone_id,$status,$task,$amount)
+    {
+        
+        $data=[
+            [
+                'user_id'=>auth()->user()->id,
+                'proposal_id'=>$request->id,
+                'milestone_id'=>1,
+                'status'=>$request->status,
+                'task'=>'',
+                'amount'=>$request->amount,
+            ],
+            [
+                'user_id'=> auth()->user()->id,
+                'proposal_id'=> $request->id,
+                'milestone_id'=>1,
+                'status'=> '',
+                'task'=>'',
+                'amount'=>''
+            ],
+            [
+                'user_id'=> auth()->user()->id,
+                'proposal_id'=> $request->id,
+                'milestone_id'=>1,
+                'status'=> '',
+                'task'=> '',
+                'amount'=>''
+            ],
+            [
+                'user_id'=> auth()->user()->id,
+                'proposal_id'=> $request->id,
+                'milestone_id'=>1,
+                'status'=> '',
+                'task'=> '',
+                'amount'=>''
+            ],
+            [
+                'user_id'=> auth()->user()->id,
+                'proposal_id'=> $request->id,
+                'milestone_id'=>1,
+                'status'=>'',
+                'task'=> '',
+                'amount'=>''
+            ],
+        ];
+
+        MilestonePayment::crate($data);
     }
 }

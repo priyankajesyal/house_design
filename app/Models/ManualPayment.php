@@ -13,6 +13,6 @@ class ManualPayment extends Model
 
     public function proposal()
     {
-        return $this->hasOne(Proposal::class);
+        return $this->belongsTo(Proposal::class);
     }
 }

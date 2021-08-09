@@ -60,7 +60,7 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        $data = Proposal::with(['portfolio', 'user', 'proposalImages'])->find($id);
+        $data = Proposal::with(['portfolio', 'user', 'proposalImages','manual'])->find($id);
         return view('admin.proposal.edit', compact('data'));
     }
 

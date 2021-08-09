@@ -38,5 +38,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin:admin'], function () {
     Route::resource('bank-details', BankDetailController::class);
     Route::resource('banners', BannerController::class);
     Route::resource('users',UserController::class);
-    Route::resource('milestone',MilestoneController::class,'milestone');
+    Route::resource('milestone',MilestoneController::class);
 });

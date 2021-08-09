@@ -44,7 +44,7 @@ class ManualPaymentController extends Controller
         if ($image = $request->file('receipt')) {
 
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $request->file('receipt')->storeAs('public/manualPayment', $profileImage);
+            $request->file('receipt')->storeAs('public/manual', $profileImage);
             $input['receipt'] = "$profileImage";
         }
         ManualPayment::create($input);

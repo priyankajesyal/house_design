@@ -26,6 +26,10 @@ class Proposal extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function manual(){
+        return $this->hasMany(ManualPayment::class);
+    }
+
     public function getImageAttribute()
     {
         return ProposalImage::where('proposal_id', $this->id)->get();

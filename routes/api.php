@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\BannerController;
 use App\Http\Controllers\Api\V1\InitialPaymentController;
+use App\Http\Controllers\Api\V1\ManualPaymentController;
 use App\Http\Controllers\Api\V1\ManualPaymnetController;
 use App\Http\Controllers\Api\V1\PortfolioController;
 use App\Http\Controllers\Api\V1\ProposalController;
@@ -33,6 +34,6 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
     Route::apiResource('portfolios', PortfolioController::class);
     Route::apiResource('proposals', ProposalController::class);
-    Route::apiResource('manual', ManualPaymnetController::class);
+    Route::apiResource('manual', ManualPaymentController::class);
     Route::apiResource('banner', BannerController::class);
 });

@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ManualPaymentRequest;
 use App\Models\ManualPayment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
-class ManualPaymnetController extends Controller
+class ManualPaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,6 +19,7 @@ class ManualPaymnetController extends Controller
         $data = ManualPayment::paginate(5);
         return Response(['data' => $data], 200);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,21 +37,20 @@ class ManualPaymnetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ManualPaymentRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
+        $input = $request->merge(['user_id' => auth()->guard('api')->user()->id])->except(['receipt']);
 
-        if ($image = $request->file('image')) {
+        if ($image = $request->file('receipt')) {
 
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $request->file('image')->storeAs('public/manualPayment', $profileImage);
-            $input['image'] = "$profileImage";
+            $request->file('receipt')->storeAs('public/manualPayment', $profileImage);
+            $input['receipt'] = "$profileImage";
         }
         ManualPayment::create($input);
 
         return response(['status' => 'success', 'data' => $input], 200);
     }
-
 
     /**
      * Display the specified resource.

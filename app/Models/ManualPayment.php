@@ -9,9 +9,9 @@ class ManualPayment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount', 'proposal_id', 'account_holder_name', 'ifsc_code', 'account_number', 'image'];
+    protected $fillable = ['user_id','proposal_id','milestone_id','amount','status','receipt'];
 
-    public function proposals()
+    public function proposal()
     {
         return $this->hasOne(Proposal::class);
     }

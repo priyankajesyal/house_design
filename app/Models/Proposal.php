@@ -27,7 +27,7 @@ class Proposal extends Model
     }
 
     public function manual(){
-        return $this->hasMany(ManualPayment::class);
+        return $this->hasOne(ManualPayment::class);
     }
 
     public function getImageAttribute()

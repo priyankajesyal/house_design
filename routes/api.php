@@ -1,14 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\V1\AuthController;
-use App\Http\Controllers\Api\V1\BannerController;
-use App\Http\Controllers\Api\V1\InitialPaymentController;
-use App\Http\Controllers\Api\V1\ManualPaymentController;
-use App\Http\Controllers\Api\V1\ManualPaymnetController;
-use App\Http\Controllers\Api\V1\PortfolioController;
-use App\Http\Controllers\Api\V1\ProposalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\BannerController;
+use App\Http\Controllers\Api\V1\ProposalController;
+use App\Http\Controllers\Api\V1\PortfolioController;
+use App\Http\Controllers\Api\V1\ManualPaymentController;
 // use App\Http\Controllers\AuthController;
 
 /*

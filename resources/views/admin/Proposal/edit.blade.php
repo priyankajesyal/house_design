@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-
+{{-- {{ $data }} --}}
 <div class="mr-0 row">
     <div class="p-5 mt-5 shadow col-md-12">
         <div class="row">
@@ -26,30 +26,37 @@
             </div>
         </div>
 
-        @if($data->manualpayment)
+        @if($data->manual)
+
         <div class="row">
             <div class="col-md-12">
                 <h2 class="p-4 text-white bg-primary">Proposal Request Payment Status</h2>
                 <div class="p-5 m-3 border">
-                    <form method="post" action="{{ route('payment.update',$data->manualpayment->id) }}">
+                    <form method="post" action="">
+
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="form-group">
                             <label for="manual">Type</label>
-                            <input type="text" id="manual" class="form-control" value="{{ $data->manualpayment->type }}" readonly>
+                            <input type="text" id="manual" class="form-control" value="{{ $data->manual->type }}" readonly>
+
                         </div>
 
                         <div class="form-group">
                             <label for="amt">Ammount</label>
-                            <input type="text" id="amt" class="form-control" value="{{ $data->manualpayment->amount }}" readonly>
+                            <input type="text" id="amt" class="form-control" value="{{ $data->manual->amount }}" readonly>
+
                         </div>
 
                         <div class="form-group">
                             <label for="status">Status</label>
-                            @if ( $data->manualpayment->status == 'Accept' || $data->manualpayment->status == 'Decline' )
+                            @if ( $data->manual->status == 'Accept' || $data->manual->status == 'Decline' )
+
+
 
                             <select class="form-control" id="status" name="status" readonly>
-                                <option value="">{{ $data->manualpayment->status }}</option>
+                                <option value="">{{ $data->manual->status }}</option>
+
                             </select>
 
                             @else
@@ -66,9 +73,16 @@
 
                         <div class="form-group">
                             <label for="amt">Receipt Image</label><br>
-                            <img src="{{ $data->manualpayment->image}}" class="p-2 m-2 border" width="200" height="200">
+                            <img src="{{ url('storage/manual/' . $data->manual->receipt) }}" class="p-2 m-2 border" width="200" height="200">
+
+
+
+
+
                         </div>
-                        @if ( $data->manualpayment->status == 'Accept' || $data->manualpayment->status == 'Decline' )
+                        @if ( $data->manual->status == 'Accept' || $data->manual->status == 'Decline' )
+
+
                         <input name="submit" id="submit" class="btn btn-primary" type="submit" disabled>
                         @else
                         <input name="submit" id="submit" class="btn btn-primary" type="submit">
@@ -78,7 +92,8 @@
             </div>
         </div>
 
-        @if ( $data->manualpayment->status == 'Accept')
+        @if ( $data->manual->status == 'Accept')
+
 
         <div class="row proposal">
             <div class="col-md-12">

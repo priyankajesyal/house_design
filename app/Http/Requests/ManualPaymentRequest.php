@@ -30,6 +30,7 @@ class ManualPaymentRequest extends FormRequest
             'amount' => 'required',
             'status' => 'required',
             'receipt' => 'required',
+            'type'=>'required',
         ];
     }
 }

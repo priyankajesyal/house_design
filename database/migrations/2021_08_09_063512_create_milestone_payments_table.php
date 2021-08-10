@@ -22,7 +22,7 @@ class CreateMilestonePaymentsTable extends Migration
             $table->bigInteger('milestone_id')->unsigned();
             $table->enum('status',['Paid','Unpaid'])->default('Unpaid');
             $table->enum('task',['Pending','Completed'])->default('Pending');
-            $table->integer('amount');
+            $table->string('amount')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('proposal_id')->references('id')->on('proposals')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('milestone_id')->references('id')->on('milestones')->onUpdate('cascade')->onDelete('cascade');

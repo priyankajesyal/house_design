@@ -26,14 +26,6 @@
                     @enderror
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <label>Price</label> 
-                    <input type="text" name="price" value="{{ $data->price }}" class="mb-3 form-control">
-                    @error('price')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
                         @error('images')
@@ -41,7 +33,7 @@
                         @enderror
                     </div>
                 </div>
-            </div>
+            
             <div class="row ">
                 <div class="col-md-10 offset-md-1 d-flex">
                     <label>Image</label><br>

@@ -3,7 +3,7 @@
 @section('content')
 <h2 class="">Milestones</h2>
 <hr>
-{{ $data }}
+{{-- {{ $data }} --}}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -13,20 +13,33 @@
                         <tr>
                             <th>S.no</th>
                             <th>Title</th>
-                            <th>Price</th>
                             <th>Amount</th>
-                            <th data-orderable="false">Action</th>
+                            <th>Status</th>
+                            <th>Task</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $key => $value)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-
                             <td>{{ $value->milestone->title }}</td>
-                            <td>{{ $value->milestone->price }}</td>
-
+                            @if($value->amount==0)
+                            <td>N/A</td>
+                            @else
                             <td>{{ $value->amount }}</td>
+                            @endif
+                            <td>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="Paid" {{$value->status=='Paid'?'selected' : ''}}>Paid</option>
+                                    <option value="Unpaid" {{$value->status=='Unpaid'?'selected' : ''}}>Unpaid</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" id="task" name="task">
+                                    <option value="Pending" {{$value->task=='Pending'?'selected' : ''}}>Pending</option>
+                                    <option value="Completed" {{$value->task=='Completed'?'selected' : ''}}>Completed</option>
+                                </select>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -35,5 +48,4 @@
         </div>
     </div>
 </div>
-
 @endsection

@@ -14,7 +14,7 @@ class AddTypeToManualPaymentsTable extends Migration
     public function up()
     {
         Schema::table('manual_payments', function (Blueprint $table) {
-            $table->enum('type',['Manual','Stripe']);
+            $table->enum('type', ['Manual', 'Stripe']);
         });
     }
 
@@ -25,8 +25,7 @@ class AddTypeToManualPaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('manual_payments', function (Blueprint $table) {
-            //
-        });
+
+        Schema::dropIfExists('manual_payments');
     }
 }

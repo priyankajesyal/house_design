@@ -34,38 +34,22 @@
                     <form method="post" action="{{ route('manualpayment.update',$data->manual->id) }}">
                         <input type="hidden" name="proposal_id" value="{{ $data->id}}">
                         <input type="hidden" name="user_id" value="{{ $data->user_id}}">
-
-
-
-
-
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="form-group">
                             <label for="manual">Type</label>
                             <input type="text" name="type" id="type" class="form-control" value="{{ $data->manual->type }}" readonly>
-
-
                         </div>
-
                         <div class="form-group">
                             <label for="amt">Ammount</label>
                             <input type="text" name="amount" id="amt" class="form-control" value="{{ $data->manual->amount }}" readonly>
-
                         </div>
-
                         <div class="form-group">
                             <label for="status">Status</label>
                             @if ( $data->manual->status == 'Accept' || $data->manual->status == 'Decline' )
-
-
-
                             <select class="form-control" id="status" name="status" readonly>
                                 <option value="{{ $data->manual->status }}">{{ $data->manual->status }}</option>
-
-
                             </select>
-
                             @else
                             <select class="form-control" id="status" name="status">
                                 <option value="">--Select--</option>
@@ -77,21 +61,17 @@
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="form-group">
                             <label for="amt">Receipt Image</label><br>
                             <img src="{{ url('storage/manual/' . $data->manual->receipt) }}" class="p-2 m-2 border" width="200" height="200">
                         </div>
                         @if ( $data->manual->status == 'Accept' || $data->manual->status == 'Decline' )
-
-
                         <input name="submit" id="submit" class="btn btn-primary" type="submit" disabled>
                         @else
                         <input name="submit" id="submit" class="btn btn-primary" type="submit">
                         @endif
                         @if ( $data->manual->status == 'Accept')
                         <a target="_blank" href="{{ route('milestone.index') }}?user_id={{ $data->user_id }}&proposal_id={{ $data->id }}" class="btn btn-primary"> Milestones
-
                         </a>
                         @endif
                     </form>
@@ -115,19 +95,6 @@
                             <label for="amt">Comments</label>
                             <textarea class="form-control"></textarea>
                         </div>
-
-                        <div class="form-group">
-                            <label for="amt">Status</label>
-                            <select name="status" class="form-control">
-                                <option value="">--Select--</option>
-                                <option value="">Selected</option>
-                                <option value="">Rejected</option>
-                            </select>
-                            @error('status')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
                         <div class="form-group">
                             <label for="amt">Attachment</label>
                             <input type="file" id="attachment">
@@ -137,7 +104,6 @@
                 </div>
             </div>
         </div>
-
         <div id="pro"></div>
         <button type="submit" class="btn btn-dark text-light add">Add Proposal</button>
         @endif

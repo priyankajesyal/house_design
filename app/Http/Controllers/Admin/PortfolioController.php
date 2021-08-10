@@ -43,7 +43,6 @@ class PortfolioController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'price' => 'required',
             'images' => 'required'
         ]);
 
@@ -97,7 +96,6 @@ class PortfolioController extends Controller
         $this->validate($request, [
             'title' => 'required|unique:portfolios,title,' . $id,
             'description' => 'required',
-            'price' => 'required',
         ]);
         $portfolio = Portfolio::find($id);
         $portfolio->update($request->all());

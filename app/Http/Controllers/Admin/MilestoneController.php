@@ -42,7 +42,7 @@ class MilestoneController extends Controller
      */
     public function store(Request $request)
     {
-
+       
     }
 
     /**
@@ -76,7 +76,10 @@ class MilestoneController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
+
+        MilestonePayment::find($id)->update($request->all());
+        return back();
     }
 
     /**

@@ -44,18 +44,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <label>Price</label>
-                <input type="text" class="form-control" name="price" value="{{ old('price') }}">
-                @error('price')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-
-            </div>
-        </div>
-    </div>
 
     <div class="form-group">
         <div class="row">

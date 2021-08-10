@@ -19,7 +19,8 @@ class CreateManualPaymentsTable extends Migration
             $table->bigInteger('proposal_id')->unsigned();
             $table->bigInteger('milestone_id')->unsigned();
             $table->string('amount')->nullable();
-            $table->enum('status',['Pending','Paid']);
+            $table->enum('status',['Accept','Decline','Pending']);
+            $table->enum('type', ['Manual', 'Stripe']);
             $table->string('receipt');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('proposal_id')->references('id')->on('proposals')->onUpdate('cascade')->onDelete('cascade');

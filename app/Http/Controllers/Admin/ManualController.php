@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Proposal;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ManualPayment;
+use Illuminate\Http\Request;
 
-class ProposalController extends Controller
+class ManualController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $data=Proposal::with(['portfolio','user'])->get();
-        return view('admin.proposal.index',compact('data'));
+        //
     }
 
     /**
@@ -48,8 +47,7 @@ class ProposalController extends Controller
      */
     public function show($id)
     {
-        $data=Proposal::with(['portfolio','user','proposalImages'])->find($id);
-        return view('admin.proposal.show',compact('data'));
+        //
     }
 
     /**
@@ -60,8 +58,7 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        $data = Proposal::with(['portfolio', 'user', 'proposalImages','manual'])->find($id);
-        return view('admin.proposal.edit', compact('data'));
+        //
     }
 
     /**
@@ -74,8 +71,9 @@ class ProposalController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->all());
-
-      
+        
+        ManualPayment::find($id)->update($request->all());
+        return back();
     }
 
     /**
@@ -86,7 +84,6 @@ class ProposalController extends Controller
      */
     public function destroy($id)
     {
-        Proposal::find($id)->delete();
-        return back()->with('error', 'Proposal has been deleted successfully');;
+        //
     }
 }

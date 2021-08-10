@@ -27,12 +27,17 @@
         </div>
 
         @if($data->manual)
-
         <div class="row">
             <div class="col-md-12">
                 <h2 class="p-4 text-white bg-primary">Proposal Request Payment Status</h2>
                 <div class="p-5 m-3 border">
                     <form method="post" action="{{ route('manualpayment.update',$data->manual->id) }}">
+                        <input type="hidden" name="proposal_id" value="{{ $data->id}}">
+                        <input type="hidden" name="user_id" value="{{ $data->user_id}}">
+
+
+
+
 
                         @csrf
                         {{ method_field('PUT') }}
@@ -56,7 +61,8 @@
 
 
                             <select class="form-control" id="status" name="status" readonly>
-                                <option value="">{{ $data->manual->status }}</option>
+                                <option value="{{ $data->manual->status }}">{{ $data->manual->status }}</option>
+
 
                             </select>
 
@@ -83,13 +89,17 @@
                         @else
                         <input name="submit" id="submit" class="btn btn-primary" type="submit">
                         @endif
+                        @if ( $data->manual->status == 'Accept')
+                        <a target="_blank" href="{{ route('milestone.index') }}?user_id={{ $data->user_id }}&proposal_id={{ $data->id }}" class="btn btn-primary"> Milestones
+
+                        </a>
+                        @endif
                     </form>
                 </div>
             </div>
         </div>
 
         @if ( $data->manual->status == 'Accept')
-
 
         <div class="row proposal">
             <div class="col-md-12">
@@ -129,24 +139,9 @@
         </div>
 
         <div id="pro"></div>
-        <button type="submit" class="btn btn-dark add">Add Proposal</button>
+        <button type="submit" class="btn btn-dark text-light add">Add Proposal</button>
         @endif
         @endif
     </div>
 </div>
 @endsection
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(e) {
-        e.preventDefault();
-        $('#submit').click(function() {
-            $('.proposal,.add').show();
-        });
-        $('.add').click(function() {
-            $('.proposal').last().clone().appendTo("#pro");
-        });
-    }
-    });
-
-</script>

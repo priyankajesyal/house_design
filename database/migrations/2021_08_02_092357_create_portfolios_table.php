@@ -18,7 +18,6 @@ class CreatePortfoliosTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('title');
             $table->text('description');
-            $table->integer('price');
             $table->foreign('user_id')->references('id')->on('admins')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

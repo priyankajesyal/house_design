@@ -10,7 +10,7 @@ class Portfolio extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'user_id', 'price'];
+    protected $fillable = ['title', 'description', 'user_id'];
     protected $appends = ['image'];
     public function portfolioImages()
     {

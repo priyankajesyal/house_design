@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\ManualPayment;
 use Illuminate\Http\Request;
+use App\Models\ManualPayment;
+use App\Models\MilestonePayment;
+use App\Http\Controllers\Controller;
 
 class ManualController extends Controller
 {
@@ -70,9 +71,12 @@ class ManualController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-        
-        ManualPayment::find($id)->update($request->all());
+        //dd($request->all());
+        $manualPayment = ManualPayment::find($id);
+        $manualPayment->update($request->all());
+        if ($request->input('type') == 'Manual') {
+            $this->milestone($request);
+        }
         return back();
     }
 
@@ -85,5 +89,59 @@ class ManualController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function milestone($request)
+    {
+
+        $data = [
+            [
+                'user_id' => $request->user_id,
+                'proposal_id' => $request->proposal_id,
+                'milestone_id' => 1,
+                'status' => 'Paid',
+                'task' => 'Pending',
+                'amount' => (int)$request->amount,
+                'created_at' => now()
+            ],
+            [
+                'user_id' => $request->user_id,
+                'proposal_id' => $request->proposal_id,
+                'milestone_id' => 2,
+                'status' => 'Unpaid',
+                'task' => 'Pending',
+                'amount' => 0,
+                'created_at' => now()
+            ],
+            [
+                'user_id' => $request->user_id,
+                'proposal_id' => $request->proposal_id,
+                'milestone_id' => 3,
+                'status' => 'Unpaid',
+                'task' => 'Pending',
+                'amount' => 0,
+                'created_at' => now()
+            ],
+            [
+                'user_id' => $request->user_id,
+                'proposal_id' => $request->proposal_id,
+                'milestone_id' => 4,
+                'status' => 'Unpaid',
+                'task' => 'Pending',
+                'amount' => 0,
+                'created_at' => now()
+            ],
+            [
+                'user_id' => $request->user_id,
+                'proposal_id' => $request->proposal_id,
+                'milestone_id' => 5,
+                'status' => 'Unpaid',
+                'task' => 'Pending',
+                'amount' => 0,
+                'created_at' => now()
+            ],
+        ];
+
+        MilestonePayment::insert($data);
     }
 }

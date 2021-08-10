@@ -26,7 +26,6 @@
                 <th>S.no</th>
                 <th>Title</th>
                 <th col width="400">Description</th>
-                <th>Price</th>
                 <th data-orderable="false">Action</th>
             </tr>
         </thead>
@@ -36,7 +35,6 @@
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $value->title }}</td>
                 <td>{{ $value->description }}</td>
-                <td>{{ $value->price }}</td>
                 <td>
                     <form method="post" action="{{ route('portfolio.destroy', $value->id) }}" >
 

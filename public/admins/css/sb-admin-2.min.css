@@ -10863,7 +10863,7 @@ a:focus {
 
 @media (min-width: 768px) {
     .sidebar {
-        width: 14rem !important;
+        width: 28rem !important;
     }
     .sidebar .nav-item .collapse {
         position: relative;
@@ -10897,7 +10897,8 @@ a:focus {
         margin-right: 0.25rem;
     }
     .sidebar .nav-item .nav-link span {
-        font-size: 0.85rem;
+        font-size: 16px;
+        margin-top: 30px;
         display: inline;
     }
     .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
@@ -10918,6 +10919,7 @@ a:focus {
     }
     .sidebar .sidebar-brand .sidebar-brand-text {
         display: inline;
+        font-size:20px;
     }
     .sidebar .sidebar-heading {
         text-align: left;
@@ -11077,6 +11079,8 @@ a:focus {
 
 .sidebar-dark .nav-item.active .nav-link i {
     color: #fff;
+    font-size: 16px;
+    margin-top: 30px;
 }
 
 .sidebar-dark #sidebarToggle {

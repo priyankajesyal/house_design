@@ -11,8 +11,8 @@ class MilestonePayment extends Model
 {
     use HasFactory;
 
-    //protected $fillable = ['user_id', 'proposal_id', 'milestone_id', 'amount', 'status', 'task'];
-    protected $guarded = [];
+    protected $fillable = ['user_id', 'proposal_id', 'milestone_id', 'amount', 'status', 'task'];
+    // protected $guarded = [];
 
     public function manualPayment()
     {

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MilestoneController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminProposalController;
 use App\Http\Controllers\Admin\BankDetailController;
 use App\Http\Controllers\Admin\ManualController;
 
@@ -41,4 +42,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin:admin'], function () {
     Route::resource('users',UserController::class);
     Route::resource('milestone',MilestoneController::class);
     Route::resource('manualpayment', ManualController::class);
+    Route::resource('adminproposal',AdminProposalController::class);
 });

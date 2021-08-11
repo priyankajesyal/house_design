@@ -185,9 +185,7 @@
 
         $(function() {
             document.getElementById("task").onchange = function() {
-                document.getElementById("task").setAttribute("disabled", "disabled");
-
-
+                document.getElementById("task").setAttribute("disabled", true);
             };
         });
     </script>

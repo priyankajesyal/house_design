@@ -196,22 +196,7 @@
 
         $(function() {
             document.getElementById("task").onchange = function() {
-                document.getElementById("task").setAttribute("disabled", "disabled");
-                // $.ajax({
-                //     url: "{{route('milestone.update',$value->id)}}"
-                //     , type: "PUT"
-                //     , cache: false
-                //     , data: {
-                //         _token: '{{ csrf_token() }}'
-                //         , status: $('#status').val()
-                //         , task: $('#task').val()
-                //     }
-                //     , success: function(res) {
-                //         console.log(res);
-                //     }
-                // });
-
-                
+                document.getElementById("task").setAttribute("disabled", true);
             };
         });
     </script>

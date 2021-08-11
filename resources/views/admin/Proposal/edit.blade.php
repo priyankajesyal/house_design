@@ -81,29 +81,46 @@
 
         @if ( $data->manual->status == 'Accept')
 
-        <div class="row proposal">
-            <div class="col-md-12">
-                <div class="p-5 m-3 border">
-                    <h2 class="p-4 bg-dark text-light">Proposal</h2>
-                    <form action="" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label for="amt">Price</label>
-                            <input type="text" id="amt" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="amt">Comments</label>
-                            <textarea class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="amt">Attachment</label>
-                            <input type="file" id="attachment">
-                        </div>
-                        <input type="submit" name="submit" class="btn btn-primary">
-                    </form>
+        <div class="proposal">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="p-5 m-3 border">
+                        <h2 class="p-4 bg-dark text-light">Proposal</h2>
+                        <form action="{{ route('adminproposal.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="proposal_id" value="{{ $data->id}}">
+                            <div class="form-group">
+                                <label for="amt">Price</label>
+                                <input type="text" name="price" class="form-control">
+                                @error('price')
+
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="amt">Comments</label>
+                                <textarea class="form-control" name="comments"></textarea>
+                                @error('comments')
+
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="amt">Attachment</label>
+                                <input type="file" name="images[]" multiple="multiple">
+                                @error('images')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+
+                            </div>
+                            <input type="submit" name="submit" class="btn btn-primary">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+
         <div id="pro"></div>
         <button type="submit" class="btn btn-dark text-light add">Add Proposal</button>
         @endif
